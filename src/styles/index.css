@@ -1,0 +1,105 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html, body {
+    @apply h-full;
+  }
+  
+  body {
+    @apply bg-gray-900 text-white font-sans;
+    margin: 0;
+    padding: 0;
+  }
+  
+  #root {
+    @apply h-full;
+  }
+}
+
+@layer components {
+  .graph-canvas {
+    @apply w-full h-full bg-graph-bg cursor-crosshair;
+  }
+  
+  .toolbar {
+    @apply absolute top-4 left-4 right-4 z-10 flex items-center justify-between;
+    @apply bg-gray-800 bg-opacity-90 backdrop-blur-sm rounded-lg px-4 py-2;
+  }
+  
+  .properties-panel {
+    @apply absolute top-0 right-0 h-full w-80 bg-gray-800 bg-opacity-95 backdrop-blur-sm;
+    @apply border-l border-gray-700 shadow-xl z-20;
+    @apply transform transition-transform duration-300 ease-in-out;
+  }
+  
+  .properties-panel.closed {
+    @apply translate-x-full;
+  }
+  
+  .properties-panel.open {
+    @apply translate-x-0;
+  }
+  
+  .form-input {
+    @apply w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md;
+    @apply text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500;
+  }
+  
+  .form-textarea {
+    @apply w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-md;
+    @apply text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500;
+    @apply resize-none min-h-[80px];
+  }
+  
+  .btn {
+    @apply px-4 py-2 rounded-md font-medium transition-colors duration-200;
+    @apply focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800;
+  }
+  
+  .btn-primary {
+    @apply bg-blue-600 hover:bg-blue-700 text-white focus:ring-blue-500;
+  }
+  
+  .btn-secondary {
+    @apply bg-gray-600 hover:bg-gray-700 text-white focus:ring-gray-500;
+  }
+  
+  .btn-danger {
+    @apply bg-red-600 hover:bg-red-700 text-white focus:ring-red-500;
+  }
+  
+  .btn-sm {
+    @apply px-3 py-1 text-sm;
+  }
+  
+  .search-input {
+    @apply flex-1 px-3 py-2 bg-gray-700 border border-gray-600 rounded-md;
+    @apply text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500;
+  }
+}
+
+@layer utilities {
+  .drag-line {
+    pointer-events: none;
+    stroke: #f59e0b;
+    stroke-width: 2;
+    stroke-dasharray: 5,5;
+    animation: dash 1s linear infinite;
+  }
+  
+  @keyframes dash {
+    to {
+      stroke-dashoffset: -10;
+    }
+  }
+  
+  .node-highlight {
+    filter: drop-shadow(0 0 8px #f59e0b);
+  }
+  
+  .loading-spinner {
+    @apply animate-spin rounded-full border-2 border-gray-600 border-t-blue-500;
+  }
+} 
